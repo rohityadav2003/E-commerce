@@ -32,7 +32,7 @@ app.use(session({
       }
 }))
 
-mongoose.connect("mongodb://127.0.0.1:27017/E-commerce")
+mongoose.connect("mongodb+srv://mongodbdatabase:rohit2003@cluster0.ppf45.mongodb.net")
 .then(()=>console.log("mongodb connected"))
 .catch(()=>console.log("error occured"));
 app.get('/',function(req,res){
