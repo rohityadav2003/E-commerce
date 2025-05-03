@@ -8,6 +8,8 @@ const path=require("path");
 const Users=require('../models/users');
 const add=require('../models/address');
 const cart = require("../models/cart");
+const orders = require("../models/orderdetail");
+
 const bcrypt=require("bcrypt");
 const router=express.Router();
 const{validationResult}=require('express-validator');
@@ -195,5 +197,6 @@ router.post("/deletecart", async (req, res) => {
       res.status(500).send('Error creating order');
     }
   });
+  //myorders//
   
 module.exports=router;

@@ -116,7 +116,12 @@
                             <td><%= item.description %></td>
                             <td><%= new Date(item.createdAt).toISOString().replace("T", " ").split(".")[0] %></td>
                             <td>
-                                <img src="<%= item.image %>" alt="Category Image" width="70" height="50" style="border-radius: 5px;">
+                                <% if (item.image) { %>
+                                    <img src="<%= item.image[0] %>" alt="Category Image" width="70" height="50" style="border-radius: 5px;">
+                                <% } else { %>
+                                    <span>No Image</span>
+                                <% } %>
+                               
                             </td>
                             
                             <td>

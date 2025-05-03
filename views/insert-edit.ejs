@@ -94,12 +94,15 @@
             <!-- Product Images -->
             <div class="formgroup mb-3">
                 <% if (editp.image1 && editp.image1.length > 0) { %>
-                    <% editp.image1.forEach((img1) => { %>
+                    <% editp.image1.forEach((img1,index) => { %>
                         <img src="<%= img1 %>" class="img-fluid" alt="Product Image">
+                        <a href="/admin/editinsertimg/<%= editp._id %>/<%= index %>">Edit Image</a>
+
                     <% }) %>
                 <% } else { %>
                     <p>No images available</p>
                 <% } %>
+               
             </div>
 
             <!-- Submit Button -->
