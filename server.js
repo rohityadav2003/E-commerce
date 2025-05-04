@@ -15,19 +15,24 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
-app.use(cors({
-    origin: process.env.REACT_APP_BASE_URL,
-    credentials: true
-  }));
-app.use(session({
-    secret:"my secret-key",
-    resave:false,
-    saveUninitialized:true,
-    cookie: {
-        secure: false,  // true only with HTTPS
-        httpOnly: true,
-      }
-}))
+const allowedOrigins = ['https://rohit-ecommerceproject.netlify.app'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // Allow cookies to be sent with requests
+};
+
+// Apply CORS middleware to all routes
+app.use(cors(corsOptions));
+app.use(express.json());
 
 mongoose.connect("mongodb+srv://mongodbdatabase:rohit2003@cluster0.ppf45.mongodb.net")
 .then(()=>console.log("mongodb connected"))
