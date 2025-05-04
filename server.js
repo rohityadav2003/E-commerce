@@ -15,10 +15,7 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
-app.use(cors({
-    origin: 'https://rohit-ecommerceproject.netlify.app',
-    credentials: true
-  }));
+app.use(cors());
 app.use(session({
     secret:"my secret-key",
     resave:false,
