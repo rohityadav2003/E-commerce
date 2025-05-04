@@ -15,15 +15,17 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
-app.use(cors());
+app.use(cors({
+    origin: process.env.REACT_APP_BASE_URL,
+    credentials: true
+  }));
 app.use(session({
     secret:"my secret-key",
     resave:false,
     saveUninitialized:true,
     cookie: {
+        secure: false,  // true only with HTTPS
         httpOnly: true,
-        secure: true,             
-        sameSite: 'None'          
       }
 }))
 
