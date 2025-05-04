@@ -16,7 +16,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors({
-    origin: 'https://cool-jelly-e7ea97.netlify.app',
+    origin: process.env.REACT_APP_BASE_URL,
     credentials: true
   }));
 // app.use(cors({
