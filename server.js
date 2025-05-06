@@ -19,17 +19,19 @@ app.use(cors({
     origin: process.env.REACT_APP_BASE_URL,
     credentials: true
   }));
- app.set('trust proxy',1)
-app.use(session({
-    secret:"my secret-key",
-    resave:false,
-    saveUninitialized:true,
+app.set("trust proxy", 1);
+app.use(
+  session({
+    secret: "my secret-key",
+    resave: false,
+    saveUninitialized: false,
     cookie: {
-        sameSite:'none',
-        secure: false,  
-        httpOnly: true,
-      }
-}))
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
+    },
+  })
+);
 
 // Apply CORS middleware to all routes
 
