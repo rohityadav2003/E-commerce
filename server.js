@@ -19,12 +19,14 @@ app.use(cors({
     origin: process.env.REACT_APP_BASE_URL,
     credentials: true
   }));
+ app.set('trust proxy',1)
 app.use(session({
     secret:"my secret-key",
     resave:false,
     saveUninitialized:true,
     cookie: {
-        secure: false,  // true only with HTTPS
+        sameSite:'none',
+        secure: false,  
         httpOnly: true,
       }
 }))
